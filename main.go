@@ -3,6 +3,9 @@ package main
 import (
 	"io"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/gin-gonic/gin"
 	"github.com/williamzhou8818/gifts-miaoshia/database"
@@ -10,11 +13,38 @@ import (
 	"github.com/williamzhou8818/gifts-miaoshia/util"
 )
 
+var (
+	writeOrderFinish bool
+)
+
+func listenSignal() {
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
+
+	for {
+		sig := <-c //阻塞，直到信号的到来
+		if writeOrderFinish {
+			util.LogRus.Infof("receive signal %s, exit", sig.String())
+			os.Exit(0)
+		} else {
+			util.LogRus.Infof("receive signal %s, but not exit", sig.String())
+		}
+	}
+}
+
 func Init() {
 	util.InitLog("log")
+	database.InitGiftInventory()
 
-	database.GetGiftDBConnection()
+	if err := database.ClearOrders(); err != nil {
+		panic(err)
+	} else {
+		util.LogRus.Info("clear table orders")
+	}
 
+	handler.InitChannel()
+	//
+	go listenSignal()
 }
 
 func main() {
@@ -37,6 +67,7 @@ func main() {
 	})
 
 	router.GET("/gifts", handler.GetAllGifts) //获取所有奖品信息
+	router.GET("/lucky", handler.Lottery)     ////点击抽奖按钮
 	router.Run("localhost:7777")
 }
 

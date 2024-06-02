@@ -63,3 +63,30 @@ func GetGiftDBConnection() *gorm.DB {
 	})
 	return gifts_mysql
 }
+
+func createRedisClient(address, passwd string, db int) *redis.Client {
+	cli := redis.NewClient(&redis.Options{
+		Addr:     address,
+		Password: passwd,
+		DB:       db,
+	})
+	if err := cli.Ping().Err(); err != nil {
+		util.LogRus.Panicf("connect to redis %d failed %v", db, err)
+	} else {
+		util.LogRus.Infof("connect to redis %d", db)
+	}
+	return cli
+}
+
+func GetRedisClient() *redis.Client {
+	gift_redis_once.Do(func() {
+		if gifts_redis == nil {
+			viper := util.CreateConfig("redis")
+			addr := viper.GetString("addr")
+			pass := viper.GetString("pass")
+			db := viper.GetInt("db")
+			gifts_redis = createRedisClient(addr, pass, db)
+		}
+	})
+	return gifts_redis
+}

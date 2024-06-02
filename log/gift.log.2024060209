@@ -1,0 +1,5 @@
+time="2024-06-02 09:26:23.229" level=info msg="receive signal interrupt, but not exit" func=main.listenSignal file="C:/Projects/min_projects/gifts-miaoshia/main.go:30"
+time="2024-06-02 09:26:23.518" level=info msg="receive signal interrupt, but not exit" func=main.listenSignal file="C:/Projects/min_projects/gifts-miaoshia/main.go:30"
+time="2024-06-02 09:26:23.676" level=info msg="receive signal interrupt, but not exit" func=main.listenSignal file="C:/Projects/min_projects/gifts-miaoshia/main.go:30"
+time="2024-06-02 09:26:24.675" level=info msg="receive signal interrupt, but not exit" func=main.listenSignal file="C:/Projects/min_projects/gifts-miaoshia/main.go:30"
+time="2024-06-02 09:26:24.827" level=info msg="receive signal interrupt, but not exit" func=main.listenSignal file="C:/Projects/min_projects/gifts-miaoshia/main.go:30"

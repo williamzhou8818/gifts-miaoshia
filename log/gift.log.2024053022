@@ -1,0 +1,2 @@
+time="2024-05-30 22:10:31.851" level=info msg="connect to redis 1" func=github.com/williamzhou8818/gifts-miaoshia/database.createRedisClient file="C:/Projects/min_projects/gifts-miaoshia/database/db_connection.go:76"
+time="2024-05-30 22:10:31.874" level=info msg="connect to mysql db gift" func=github.com/williamzhou8818/gifts-miaoshia/database.createMysqlDB file="C:/Projects/min_projects/gifts-miaoshia/database/db_connection.go:48"

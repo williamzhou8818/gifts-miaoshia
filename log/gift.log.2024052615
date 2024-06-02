@@ -1,2 +1,4 @@
 time="2024-05-26 15:10:17.676" level=info msg="connect to mysql db gift" func=github.com/williamzhou8818/gifts-miaoshia/database.createMysqlDB file="C:/Projects/min_projects/gifts-miaoshia/database/db_connection.go:48"
 time="2024-05-26 15:11:52.276" level=info msg="connect to mysql db gift" func=github.com/williamzhou8818/gifts-miaoshia/database.createMysqlDB file="C:/Projects/min_projects/gifts-miaoshia/database/db_connection.go:48"
+time="2024-05-26 15:37:36.015" level=info msg="connect to redis 1" func=github.com/williamzhou8818/gifts-miaoshia/database.createRedisClient file="C:/Projects/min_projects/gifts-miaoshia/database/db_connection.go:76"
+time="2024-05-26 15:37:36.021" level=info msg="connect to mysql db gift" func=github.com/williamzhou8818/gifts-miaoshia/database.createMysqlDB file="C:/Projects/min_projects/gifts-miaoshia/database/db_connection.go:48"
